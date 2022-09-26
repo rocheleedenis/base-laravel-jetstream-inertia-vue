@@ -23,5 +23,5 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::get('/stockbrokers', [StockbrokerController::class, 'index'])->name('stockbrokers');
+    Route::resource('/stockbrokers', StockbrokerController::class);
 });

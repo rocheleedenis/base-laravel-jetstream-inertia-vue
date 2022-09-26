@@ -10,4 +10,10 @@ class Stockbroker extends Model
     use HasFactory;
 
     protected $table = 'stockbrokers';
+
+    protected $fillable = [
+        'name',
+        'full_name',
+        'cnpj',
+    ];
 }
