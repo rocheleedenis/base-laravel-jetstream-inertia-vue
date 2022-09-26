@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StockbrokerResource;
 use App\Models\Stockbroker;
 use Illuminate\Http\Request;
 
@@ -9,9 +10,9 @@ class StockbrokerController extends Controller
 {
     public function index()
     {
-        return inertia('Stockbrokers/Index', [
-            'stockbrokers' => Stockbroker::get(),
-        ]);
+        $stockbrokers = StockbrokerResource::collection(Stockbroker::all());
+
+        return inertia('Stockbrokers/Index', compact('stockbrokers'));
     }
 
     public function create()
