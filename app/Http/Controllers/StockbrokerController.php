@@ -25,6 +25,7 @@ class StockbrokerController extends Controller
     {
         Stockbroker::firstOrCreate($request->validated());
 
-        return redirect()->route('stockbrokers.index');
+        return redirect()->route('stockbrokers.index')
+            ->with('message', 'Stockbroker created successfully!');
     }
 }

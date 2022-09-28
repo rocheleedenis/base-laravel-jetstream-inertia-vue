@@ -310,6 +310,9 @@ const logout = () => {
 
             <!-- Page Content -->
             <main>
+                <div v-if="true" class="text-blue-600 mb-4">
+                    {{ $page.props.flash.message }}
+                </div>
                 <slot />
             </main>
         </div>
