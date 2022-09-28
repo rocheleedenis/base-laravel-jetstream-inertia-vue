@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StockbrokerRequest;
 use App\Http\Resources\StockbrokerResource;
 use App\Models\Stockbroker;
 use Illuminate\Http\Request;
@@ -20,13 +21,9 @@ class StockbrokerController extends Controller
         return inertia('Stockbrokers/Create');
     }
 
-    public function store(Request $request)
+    public function store(StockbrokerRequest $request)
     {
-        Stockbroker::firstOrCreate([
-            'name' => $request->name,
-            'full_name' => $request->full_name,
-            'cnpj' => $request->cnpj,
-        ]);
+        Stockbroker::firstOrCreate($request->validated());
 
         return redirect()->route('stockbrokers.index');
     }
